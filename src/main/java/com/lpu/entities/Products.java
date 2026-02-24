@@ -4,7 +4,9 @@ import java.util.List;
 
 import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 @Cacheable
@@ -13,9 +15,10 @@ public class Products {
 	@Id
 	private int product_id;
 	private String product_name;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
 	private Categories categories;
-	@ManyToMany
+	@ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
 	private List<Orders> orders;
 	public int getProduct_id() {
 		return product_id;

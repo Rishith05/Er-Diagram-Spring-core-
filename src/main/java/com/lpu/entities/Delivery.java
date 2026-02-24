@@ -3,7 +3,9 @@ package com.lpu.entities;
 import java.util.List;
 
 import jakarta.persistence.Cacheable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -14,7 +16,7 @@ public class Delivery {
 	private int delivery_id;
 	private String type;
 	private String status;
-	@OneToMany
+	@OneToMany(mappedBy = "d", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Orders> orders;
 	public int getDelivery_id() {
 		return delivery_id;

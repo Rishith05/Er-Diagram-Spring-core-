@@ -34,14 +34,14 @@ public class AllController {
         OrdersService orderService = ac.getBean(OrdersService.class);
         
         
-        // 1️ Category Operations
+//         1️ Category Operations
         Categories cat = new Categories();
         cat.setCategory_id(1);
         cat.setCategory_name("Electronics");
         cat.setCategory_type("Gadgets");
 
         categoryService.registerCategory(cat);
-        categoryService.getCategory(1);
+//        System.out.println(categoryService.getCategory(1));
         
         
         // 2️ Customer Operations
@@ -52,7 +52,7 @@ public class AllController {
         customer.setAddress("Hyderabad");
 
         customerService.registerCustomer(customer);
-        customerService.getCustomer(101);
+//        System.out.println(customerService.getCustomer(101));
         
         
         // 3️ Delivery Operations
@@ -62,7 +62,7 @@ public class AllController {
         delivery.setStatus("Pending");
 
         deliveryService.registerDelivery(delivery);
-        deliveryService.getDelivery(201);
+//        System.out.println(deliveryService.getDelivery(201));
   
         
         // 4️ Product Operations
@@ -72,7 +72,7 @@ public class AllController {
         product.setCategories(cat);
 
         productService.registerProduct(product);
-        productService.getProduct(301);
+//        System.out.println(productService.getProduct(301));
                 
         
         // 5️ Order Operations
@@ -87,7 +87,7 @@ public class AllController {
         order.setProducts(productList);
 
         orderService.createOrder(order);
-        orderService.getOrder(401);
+//        System.out.println(orderService.getOrder(401));
 
         
         ac.close();

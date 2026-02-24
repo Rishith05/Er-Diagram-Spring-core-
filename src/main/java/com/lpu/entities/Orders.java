@@ -4,7 +4,10 @@ import java.util.List;
 
 import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 @Cacheable
@@ -13,11 +16,14 @@ public class Orders {
 	@Id
 	private int order_id;
 	private String order_date;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id")
 	private Customer c;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "delivery_id")
 	private Delivery d;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "order_product")
 	private List<Products> products;
 	public int getOrder_id() {
 		return order_id;
